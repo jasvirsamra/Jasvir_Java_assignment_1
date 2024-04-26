@@ -1,0 +1,54 @@
+/*Drivers are concerned with the mileage their automobiles get.
+ One driver has kept track of several trips by recording the miles driven and gallons used for each tankful. 
+ Develop a Java application that will input the miles driven and gallons used (both as integers) for each trip. 
+ The program should calculate and display the miles per gallon obtained for each trip and print the combined 
+ miles per gallon obtained for all trips up to this point. All averaging calculations should produce 
+ floating-point results. 
+Use class Scanner and sentinel-controlled iteration to obtain the data from the user. */
+
+import java.util.Scanner;
+
+public class chap4_ex417 {
+       public static void main(String[] args) {
+Scanner input = new Scanner(System.in);
+
+int totalMiles = 0;
+int totalGallons = 0;
+int tripCount = 0;
+int miles;
+int gallons;
+  do {
+  System.out.print("Enter the miles driven (or -1 to exit): ");
+  miles = input.nextInt();
+
+  switch (miles) {
+    case -1:
+   break;
+               
+   default:
+                    
+   System.out.print("Enter the gallons used: ");
+    gallons = input.nextInt();
+
+ double mileage = (double)miles / gallons;
+ System.out.println("Miles per gallon for this trip: " + mileage);
+
+totalMiles += miles;
+totalGallons += gallons;
+tripCount++;
+break;
+    }
+      
+} 
+while (miles != -1);
+
+        if (tripCount > 0) {
+            double combinedmileage = (double)totalMiles / totalGallons;
+            System.out.println("total miles: " + totalMiles);
+            System.out.println("Combined miles per gallon for all trips: " + combinedmileage);
+        } else {
+            System.out.println("No trips recorded.");
+        }
+    input.close();
+    }
+}
